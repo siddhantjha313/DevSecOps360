@@ -20,7 +20,7 @@ jobs:
         dir: [terraform/environments/local, terraform/environments/staging, terraform/environments/production]
     steps:
       - uses: actions/checkout@v4
-      - uses: hashicorp/setup-terraform@v3
+      - uses: hashicorp/setup-terraform@v4
         with:
           terraform_version: 1.10.3
       - run: terraform fmt -check -recursive terraform
