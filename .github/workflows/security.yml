@@ -27,7 +27,7 @@ jobs:
     name: Secret detection (gitleaks)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0 # scan full history, not just the last commit
       - name: gitleaks
@@ -45,7 +45,7 @@ jobs:
     name: Dependency scanning (pip-audit, npm audit, Trivy fs)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -79,7 +79,7 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/dependency-review-action@v4
         with:
           fail-on-severity: high
@@ -90,7 +90,7 @@ jobs:
     name: SAST (Semgrep)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Semgrep
         run: |
           docker run --rm -v "$PWD:/src" -w /src "$SEMGREP_IMAGE" semgrep scan \
@@ -107,7 +107,7 @@ jobs:
     name: IaC misconfiguration (Trivy config)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Scan Dockerfiles, Kubernetes, Terraform, Compose
         run: |
           docker run --rm -v "$PWD:/src" -w /src "$TRIVY_IMAGE" config \
