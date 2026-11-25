@@ -36,7 +36,7 @@ jobs:
     outputs:
       tag: ${{ steps.vars.outputs.tag }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Compute names
         id: vars
@@ -143,7 +143,7 @@ jobs:
       NAMESPACE: devsecops360-dev
       OVERLAY: development
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Create kind cluster
         uses: helm/kind-action@v1
@@ -206,7 +206,7 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Update staging image tags
         run: |
           tag="${{ needs.images.outputs.tag }}"

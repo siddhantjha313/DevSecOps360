@@ -19,7 +19,7 @@ jobs:
       matrix:
         dir: [terraform/environments/local, terraform/environments/staging, terraform/environments/production]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.10.3
@@ -37,7 +37,7 @@ jobs:
   kubernetes:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Install kustomize + kubeconform
         run: |
           curl -sSL https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.5.0/kustomize_v5.5.0_linux_amd64.tar.gz | tar xz
@@ -64,7 +64,7 @@ jobs:
       run:
         working-directory: ansible
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -76,7 +76,7 @@ jobs:
   observability:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: promtool check config + rules
         run: |
           docker run --rm -v "$PWD/observability/prometheus:/p" --entrypoint promtool prom/prometheus:v3.1.0 \
